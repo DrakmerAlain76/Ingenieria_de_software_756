@@ -1,21 +1,42 @@
 <?php
 require_once("../conexion.php");
 $id=$_REQUEST['id'];
-echo "ID".$id;
+// echo "ID".$id;
 $sql="SELECT * FROM usuarios where id_usuario='$id'";
 $result=$conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html><head>
-    <title>
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="stylesheet" type="text/css" href="../style/style1.css">
+    <title>Modificar</title>
+    <style>
+        .datagrid{
+            width: 25%;
+        }
+        .datagrid td tr{
 
-</title>
+        }
+        input[type="text"],
+        input[type="email"],
+        button{
+            /* display:block; */
+            padding-top: 10px;
+        }
+        h1{
+            color: #A65B1A;
+        }
+    </style>
 </head>
 <body>
+    <br>
+    <center>
+    <h1>Modificar</h1>
     <?php
     while($row=mysqli_fetch_assoc($result)){
     ?>
     <form method="post" action="actualizar.php">
+        <div class="datagrid">
         <table border="1">
             <tr>
                 <td>Id</td>
@@ -71,11 +92,13 @@ $result=$conn->query($sql);
             
             
         </table>
-        <input type="submit" value="Modificar"><br><br>
+        </div>
+        <input class="boton" type="submit" value="Modificar"><br><br>
         <br><a class="boton" href="../adm/lista_usuarios.php">volver</a>
     </form>
 <?php
 }
 ?>
+</center>
 </body>
 </html>

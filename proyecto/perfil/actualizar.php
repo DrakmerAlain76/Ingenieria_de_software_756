@@ -1,4 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <title>Perfil</title>
+</head>
+<body>
+
 <?php
+
 require_once '../conexion.php';
 if(isset($_SESSION['usuario'])){
     $t=$_SESSION['usuario'];
@@ -85,24 +96,15 @@ if(isset($_POST)){
             // var_dump($sql1);
             // die();
             $guardar = mysqli_query($conn, $sql1);
-            $mensaje= "<center><h1>se actualizo<h1></center>"."<center><a href=\"../adm/lista_usuarios.php\">Regresar</a></center><br>";
+            $mensaje= "<center><br><h1>se actualizó<h1><br></center>"."<center><a class=\"boton\" href=\"../adm/lista_usuarios.php\">Regresar</a></center><br>";
         }else{
-            $mensaje ="<center><h1>error no se actualizo</h1><center>"."<center><a href=\"../adm/lista_usuarios.php\">Regresar</a><center><br>";
+            $mensaje ="<center><h1><h1>error no se actualizó</h1><br><center>"."<center><a class=\"boton\" href=\"../adm/lista_usuarios.php\">Regresar</a><center><br>";
         }
     
 }
 
 ?>  
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../style/style.css">
-    <title>Perfil</title>
-</head>
-<body>
     <?php require_once ('../view/menu_navegacion_us.php');
     echo $mensaje;
     ?>

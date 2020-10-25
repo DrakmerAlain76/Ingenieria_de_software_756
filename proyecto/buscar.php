@@ -5,7 +5,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="style/style.css">	
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="stylesheet" type="text/css" href="style/style1.css">	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<!-- <style>
@@ -25,7 +26,7 @@
 	
 
 
-<center>
+<center><br>
 	<h1>BUSCAR</h1>
 	<form method="POST" action="buscar.php">
 		<input type="text" name="buscar" placeholder="Buscar" required>
@@ -35,8 +36,11 @@
 			<option value="usuario">Usuario</option>
 			<option value="tipo">Tipo</option>
 		</select>
-		<input class="boton" type="Submit" name="btn" value="Buscar">
-	</form><br>
+		<input class="boton" type="Submit" name="btn" value="Buscar"><br>
+		<a class="boton" href="buscar.php">Recargar</a><br><br>
+	
+	<a class="boton" href="adm/lista_usuarios.php">volver</a>
+	</form>
 	<?php
 		if(isset($_POST["btn"]))
 		{
@@ -54,6 +58,7 @@
 		if($resul->num_rows>0)
 		{
 	?>
+	<div class="datagrid">
 	<table border="1">
 		<thead>
 			<th>ID</th>
@@ -96,7 +101,7 @@
 	?>
 		</tbody>
 	</table>
-
+	</div>
 	<form method="GET" action="controller/reportes_busqueda1.php">
 		<?php
 			if(isset($_POST["btn"]))
@@ -112,9 +117,7 @@
 		<!-- <input type="submit" name="imprimir" value="imprimir" onclick="location.href='reportes_busqueda.php'"> -->
 	</form>
 	<br>
-	<a class="boton" href="buscar.php">Recargar</a>
-	<!-- <br><br> -->
-	<a class="boton" href="adm/lista_usuarios.php">volver</a>
+
 </center>
 </body>
 </html>

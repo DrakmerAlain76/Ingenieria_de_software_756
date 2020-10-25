@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+    </head>
+    <body>
+        
+    <center><br>
+    <br>
+
 <?php
 if(isset($_POST)){
 	require_once 'conexion.php';
@@ -90,36 +100,37 @@ if(isset($_POST)){
             }
             
 	    }else{
+            //////////////////////////
+            ?>
+    
+            <?php
+            //////////////////////////
+
         $_SESSION['errores'] = $errores;
         ?>
-        <h1><strong> NO SE REGISTRO </strong></h1>
-        <a href="formulario.php">volver a registrarse</a><br>
-        <a href="index_.php">inicio</a>
+        <h1><strong> NO SE REGISTRO </strong></h1><br>
+        <a class="boton" href="formulario.php">volver a registrarse</a><br><br>
+        <a class="boton" href="index_.php">inicio</a>
         <?php
         //header('Location: formulario.php');
     }
     if(!$errores){
 ?>
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <link rel="stylesheet" type="text/css" href="style/style.css">
-    </head>
-    <body>
-        
-    <center><br>
-    <br>
-    <h1><strong>SE REGISTRO CORREACTAMENTE</strong></h1>
+
+    <h1><strong>SE REGISTRO CORRECTAMENTE</strong></h1>
     <?php
     /// HACER EL CONTROL DE VOLVER AL MENU DE INICIO
     require_once 'helper/control_par.php';
     if ($w) {
         // header('Location: panel_de_control.php');
-        header('Location: adm/lista_usuarios.php');
+        echo "<h1><strong>FELICIDADES</strong></h1><br>";
+        // header('Location: adm/lista_usuarios.php');
+        echo "<a class=\"boton\" href=\"adm/lista_usuarios.php\">volver</a><br>";
     }
     ?>
     <br><a class="boton" href="registrar.php">iniciar sesión</a><br><br>
     <a class="boton" href="index_.php">inicio</a>
+    
     </center>
 <?php
     }

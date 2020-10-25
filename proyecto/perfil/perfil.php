@@ -52,19 +52,19 @@ $result=$conn->query($sql);
                 <td><?php echo $row['email'];?></td>
             </tr>
             <tr>
-                <td>Usaurio</td>
+                <td>Usuario</td>
                 <td><?php echo $row['usuario'];?></td>
             </tr>
             <tr>
-                <td>Cedula</td>
+                <td>Cédula</td>
                 <td><?php echo $row['cedula'];?></td>
             </tr>
             <tr>
-                <td>Pais</td>
+                <td>País</td>
                 <td><?php echo $row['pais'];?></td>
             </tr>
             <tr>
-                <td>Telefono</td>
+                <td>Télefono</td>
                 <td><?php echo $row['numero_cell'];?></td>
             </tr>
             <tr>

@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="stylesheet" type="text/css" href="../style/style1.css">
+    <title>Modificar</title>
+    
+<head>
+<body>
+<center>
+    <br><br>
 <?php
 if(isset($_POST)){
 	require_once '../conexion.php';
@@ -73,13 +84,18 @@ if(isset($_POST)){
             //ACTUALIZAR
             $sql1="UPDATE usuarios SET nombres='$nombre',apellidos='$apellidos',usuario='$usuario',email='$email',tipo=2,cedula='$cedula',pais='$pais',numero_cell='$numero_cell' WHERE id_usuario=$id";
             $guardar = mysqli_query($conn, $sql1);
-            echo "se actualizo";
-            echo "<a href=\"../adm/lista_usuarios.php\">Regresar</a><br>";
+            echo "<h1>se actualizo</h1><br>";
+            echo "<a class=\"boton\" href=\"../adm/lista_usuarios.php\">Regresar</a><br>";
         }else{
-            echo "error no se actualizo";
-            echo "<a href=\"../adm/lista_usuarios.php\">Regresar</a><br>";
+            echo "<h1>error no se actualizo</h1><br>";
+            echo "<a class=\"boton\" href=\"../adm/lista_usuarios.php\">Regresar</a><br>";
         }
     
 }
 
 ?>  
+
+</center>    
+</body>
+
+</html>
