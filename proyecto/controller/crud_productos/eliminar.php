@@ -12,11 +12,27 @@
 <?php
 require_once("../../conexion.php");
 $id=$_REQUEST['id'];
-$nombre_producto_el="SELECT nombre_producto,marca,fecha_dis from productos where id_producto='$id'";
+$nombre_producto_el="SELECT * from productos where id_producto='$id'";
 $sql1=mysqli_query($conn,$nombre_producto_el);
-$re=mysqli_fetch_array($sql1);
+
+// $re=mysqli_fetch_array($sql1);
+///////////////////////////////////////////
+while($re = mysqli_fetch_array($sql1))
+        {
+            $img= $re['image'];
+        }
+        // var_dump($img);
+        // die();
+
+        if($img){
+            unlink("images/".$img);
+        }
+        
+///////////////////////////////////////////
+
 //eliminar con el marca
-echo "Se borró correctamente el producto: <b>".$re['0']."</b> del marca <b>".$re['1']."<br/>";
+
+echo "<h1>Se borró correctamente el producto</h1>";
 
 $sql="SELECT id_producto from productos where id_producto='$id'";
 $result=$conn->query($sql);//alternativa

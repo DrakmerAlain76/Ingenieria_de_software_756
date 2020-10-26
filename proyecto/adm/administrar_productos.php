@@ -23,7 +23,7 @@ require_once '../conexion.php';
 <body>
     
 <center>
-        <form method="post" action="../controller/crud_productos/insertar.php"> 
+        <form method="post" action="../controller/crud_productos/insertar.php" enctype="multipart/form-data"> 
             <br><h1 class="titulo_f">Nuevo Producto</h1>
             <br>
             <input type="text" placeholder="nombre del producto" required name="nombre_producto"><br>
@@ -32,7 +32,10 @@ require_once '../conexion.php';
             <input type="int" placeholder="unidad disponible" required name="unidad_dis"><br>
             <!-- <input type="int" placeholder="comprado_p" required name="comprado_p"><br> -->
             <textarea  required name="comentario">descripcion </textarea><br> 
-            <input type="date" placeholder="fecha curso" required name="fecha_dis"><br>
+            <input type="date" placeholder="fecha curso" required name="fecha_dis"><br><br>
+            <!-- imagen -->
+            <input type="file" name="image" placeholder="Enter email" required><br>
+            <!--  -->
             <input class="boton" type="submit" name="Registrar" value="Registrar">
             <input class="boton" type="reset" name="Limpiar" value="Limpiar">
         </form>
@@ -49,7 +52,8 @@ require_once '../conexion.php';
                     <th>UNIDADES DISPONIBLES</th>
                     <th>FECHA</th>
                     <th>RESERVAS</th>
-                    <th>COMPRADO_P NO INSERTAR</th><!--REVISAR-->
+                    <th>COMPRADOS</th><!--REVISAR-->
+                    <th>IMAGEN</th>
                     <th>ELIMINAR</th>
                     <th>MODIFICAR</th>
                 </tr>
@@ -70,6 +74,7 @@ require_once '../conexion.php';
                                 <td><?php echo $row['fecha_dis'];?></td>
                                 <td><?php echo $row['reservas'];?></td>
                                 <td><?php echo $row['comprado_p'];?></td>
+                                <td><img src= "<?php "../controller/images/images/".$row['image']?>" alt="" width="50px" height="50px" ></td>
                                 <td><a href="../controller/crud_productos/modificar.php? id=<?php echo $row['id_producto'];?>"><img src="../img/ico/editar.ico" alt=""></a></td>
                                 <td><a href="../controller/crud_productos/eliminar.php? id=<?php echo $row['id_producto'];?>"><img src="../img/ico/eliminar.ico" alt=""></a></td>
                             </tr>
@@ -86,6 +91,7 @@ require_once '../conexion.php';
                                 <td><?php echo $row['fecha_dis'];?></td>
                                 <td><?php echo $row['reservas'];?></td>
                                 <td><?php echo $row['comprado_p'];?></td>
+                                <td><img src= "<?php echo "../controller/crud_productos/images/".$row['image']?>" alt="" width="50px" height="50px" ></td>
                                 <td><a href="../controller/crud_productos/modificar.php? id=<?php echo $row['id_producto'];?>"><img src="../img/ico/editar.ico" alt=""></a></td>
                                 <td><a href="../controller/crud_productos/eliminar.php? id=<?php echo $row['id_producto'];?>"><img src="../img/ico/eliminar.ico" alt=""></a></td>
                             </tr>

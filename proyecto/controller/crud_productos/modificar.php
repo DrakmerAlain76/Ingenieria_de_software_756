@@ -32,9 +32,13 @@ $result=$conn->query($sql);
 </head>
 <body>
     <?php
+
+
     while($row=mysqli_fetch_assoc($result)){
+    
+        $image = $row['image'];
     ?>
-    <form method="post" action="actualizar.php">
+    <form method="post" action="actualizar.php"  enctype="multipart/form-data">
         <center>
         <br>
         <h1>MODIFICAR CURSO</h1>
@@ -66,6 +70,16 @@ $result=$conn->query($sql);
             <tr>
                 <td>unidades disponibles</td>
                 <td><input type="text" name="unidad_dis" value='<?php echo $row['unidad_dis'];?>'></td>
+            </tr>
+
+            <tr>
+                <td>imagen</td>
+                <td>
+                    <!-- como modificar -->
+                    <!-- <img src= "<?php// "images/".$image?>" alt="" width="50px" height="50px" > -->
+                    <img src= "<?= "images/".$image?>" alt="" width="100px" height="100px" class="thumbnail">
+                    <input type="file" name="image" placeholder="Enter email" value="<?php echo $image?>">
+                </td>
             </tr>
             <!-- <tr>
                 <td>comprado_p</td>

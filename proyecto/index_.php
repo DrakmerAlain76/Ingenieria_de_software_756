@@ -44,16 +44,31 @@ require_once 'helper/control_par.php';
         <center>
         
             <?php
-                $sql_productos="SELECT id_producto,nombre_producto,marca,comentario,precio,fecha_dis,unidad_dis FROM productos";
+                $sql_productos="SELECT id_producto,nombre_producto,marca,comentario,precio,fecha_dis,unidad_dis,image FROM productos";
                 $lista = mysqli_query($conn, $sql_productos);
                 while($respuesta = mysqli_fetch_assoc($lista)){
+                    // nombres para la imagen de la base de datos
+
+                    $name=$respuesta['nombre_producto'];
+                    $image = $respuesta['image'];
+                    ////////////////
                     echo "<section class=\"section_contenido\">";
                     echo "<center><h1 class=\"nombre_producto\">".$respuesta['nombre_producto']."</h1></center>";
                     echo "<labe1 class=\"marca\">"."Marca: ".$respuesta['marca']."</labe1><br>";
                     echo "<labe1 class=\"comentario\">"."Comentario: ".$respuesta['comentario']."</labe1><br>";
                     echo "<label class=\"precio\">"."Precio: ".$respuesta['precio']."$"."</label><br>";
                     echo "<label class=\"unidad_dis\">"."unidades disponibles: ".$respuesta['unidad_dis'].".</label><br><br>";
-                    // echo "<label class=\"fecha\">"."fecha de diponible: ".$respuesta['fecha_dis']."</label><br><br>";
+                    
+                    ///////////////////////////
+                    // IMAGEN
+                    // var_dump($image);
+                    ?>
+                    <div><img src= "<?= "controller/crud_productos/images/".$image?>" alt="<?= $name ?>" width="100px" height="75px"></div>
+                    <?php
+                    
+                    ///////////////////////////
+
+                    
                     // LA RESERVA DEBE ESTAR AQUI, ESTO PARA CADA CURSO 
                     if($w==2){
                     ?>

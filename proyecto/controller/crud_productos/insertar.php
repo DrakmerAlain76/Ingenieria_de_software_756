@@ -28,6 +28,22 @@ if(isset($_POST)){
         $fecha_dis = isset($_POST['fecha_dis']) ? mysqli_real_escape_string($conn, $_POST['fecha_dis']) : false;
 
         // $comprado_p = isset($_POST['comprado_p']) ? mysqli_real_escape_string($conn, $_POST['comprado_p']) : false;
+        // var_dump($_POST);
+        
+        ///////////////////////////////////////////////////////
+        // RECIBE LA IMAGEN
+        // var_dump($_FILES['image']['name']);
+        // var_dump($_FILES['image']['tmp_name']);
+        $image_name   = $_FILES['image']['name'];
+        $image        = $_FILES['image']['tmp_name'];
+        //ruta
+        $location     = "images/".$image_name;
+            
+        //nombre y ruta
+        move_uploaded_file($image, $location);
+        // die();
+        ///////////////////////////////////////////////////////   
+
         // var_dump($fecha_dis);
 
     // die();
@@ -86,7 +102,8 @@ if(isset($_POST)){
         // die();
         $guardar_producto= false;
 
-        
+         
+
         if(count($errores) == 0){
             $guardar_producto= true;
             // INSERTAR USUARIO EN LA TABLA USUARIOS DE LA BBDD
@@ -95,7 +112,7 @@ if(isset($_POST)){
             //     null, '$nombre_producto', '$marca', '$comentario', $precio, $unidad_dis, $fecha_dis, 0);";
             //REVISAR EL ERROR DE LA FECHA O COMO SE INSERTA LAS FECHAS
             $sql = "INSERT INTO productos VALUES(
-                null, '$nombre_producto', '$marca', '$comentario', $precio, $unidad_dis, '$fecha_dis', 0, 0);";
+                null, '$nombre_producto', '$marca', '$comentario', $precio, $unidad_dis, '$fecha_dis', 0, 0,'$image_name');";
             $guardar = mysqli_query($conn, $sql);
             // var_dump($sql);
             // var_dump($guardar);
@@ -110,7 +127,7 @@ if(isset($_POST)){
         $_SESSION['errores'] = $errores;
         ?>
         <h1><strong> NO SE REGISTRO </strong></h1>
-        <a class="boton" href="../../adm/administrar_productos">volver a registrar curso</a><br>
+        <a class="boton" href="../../adm/administrar_productos">volver a registrar producto</a><br>
         <?php
         //header('Location: formulario.php');
     }
@@ -120,7 +137,7 @@ if(isset($_POST)){
 
     
         <center>
-    <h1><strong>SE AGREGO UN NUEVO CUERSO CORRECTAMENTE</strong></h1><br>
+    <h1><strong>SE AGREGO UN NUEVO PRODUCTO CORRECTAMENTE</strong></h1><br>
     <?php
     /// HACER EL CONTROL DE VOLVER AL MENU DE INICIO
     // require_once 'helper/control_par.php';
@@ -128,7 +145,7 @@ if(isset($_POST)){
     //     header('Location: panel_de_control.php');
     // }
     ?>
-    <a class="boton" href="../../adm/administrar_productos">volver a registrar curso</a><br>
+    <a class="boton" href="../../adm/administrar_productos">volver a registrar producto</a><br>
     
 <?php
     }

@@ -20,6 +20,19 @@ if(isset($_POST)){
 
         // $comprado_p = isset($_POST['comprado_p']) ? mysqli_real_escape_string($conn, $_POST['comprado_p']) : false;
 
+        ////////////////////////////////////////////
+        //IMAGEN
+        $image_name   = $_FILES['image']['name'];
+        // var_dump($image_name);
+        // die();
+        $image        = $_FILES['image']['tmp_name'];
+
+        $location     = "images/".$image_name;
+
+        move_uploaded_file($image, $location);
+
+
+        ////////////////////////////////////////////
 
         $fecha_dis = isset($_POST['fecha_dis']) ? mysqli_real_escape_string($conn, $_POST['fecha_dis']) : false;
         // var_dump($fecha_dis);
@@ -87,7 +100,7 @@ if(isset($_POST)){
             
             // $sql2="UPDATE productos SET nombre_producto='$nombre_producto', marca='$marca', comentario='$comentario', precio=$precio, unidad_dis=$unidad_dis,/*fecha_dis=0, reservas=0 */WHERE id_producto=$id";
             // $sql2="UPDATE productos SET nombre_producto='$nombre_producto', marca='$marca', comentario='$comentario', precio=$precio, unidad_dis=$unidad_dis, fecha_dis='$fecha_dis', comprado_p=$comprado_p WHERE id_producto=$id";
-            $sql2="UPDATE productos SET nombre_producto='$nombre_producto', marca='$marca', comentario='$comentario', precio=$precio, unidad_dis=$unidad_dis, fecha_dis='$fecha_dis' WHERE id_producto=$id";
+            $sql2="UPDATE productos SET nombre_producto='$nombre_producto', marca='$marca', comentario='$comentario', precio=$precio, unidad_dis=$unidad_dis, fecha_dis='$fecha_dis',image = '$image_name' WHERE id_producto=$id";
             // var_dump($sql2);
             // die();
             // $guardar = mysqli_query($conn, $sql2);
