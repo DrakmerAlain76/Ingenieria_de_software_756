@@ -1,5 +1,5 @@
-Sistema de reserva de cursos o conferencias
-
+Sistema de compra de computadoras y accesorio online
+CompuMundo
 #
 #
 #

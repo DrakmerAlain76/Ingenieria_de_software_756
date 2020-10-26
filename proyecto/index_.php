@@ -25,7 +25,7 @@ require_once 'helper/control_par.php';
             <li class="logs"><a href=""><img src="img/ico/yt.ico" alt=""></i></a></li>
         </ul>
         <section id="letra_imgp">
-            <h1 class="let_p">RESERVA DE CONFERENCIAS VIRTUALES</h1>
+            <h1 class="let_p">TIENDA VIRTUAL DE VENTAS DE COMPUTADORAS COMPUMUNDO</h1>
             
         </section>
     </div>
@@ -44,22 +44,22 @@ require_once 'helper/control_par.php';
         <center>
         
             <?php
-                $sql_cursos="SELECT id_curso,nombre_curso,expositor,comentario,costo,fecha_curso,horario FROM cursos";
-                $lista = mysqli_query($conn, $sql_cursos);
+                $sql_productos="SELECT id_producto,nombre_producto,marca,comentario,precio,fecha_dis,unidad_dis FROM productos";
+                $lista = mysqli_query($conn, $sql_productos);
                 while($respuesta = mysqli_fetch_assoc($lista)){
                     echo "<section class=\"section_contenido\">";
-                    echo "<center><h1 class=\"nombre_curso\">".$respuesta['nombre_curso']."</h1></center>";
-                    echo "<labe1 class=\"expositor\">"."Expositor: ".$respuesta['expositor']."</labe1><br>";
+                    echo "<center><h1 class=\"nombre_producto\">".$respuesta['nombre_producto']."</h1></center>";
+                    echo "<labe1 class=\"marca\">"."Marca: ".$respuesta['marca']."</labe1><br>";
                     echo "<labe1 class=\"comentario\">"."Comentario: ".$respuesta['comentario']."</labe1><br>";
-                    echo "<label class=\"costo\">"."Costo: ".$respuesta['costo']."$"."</label><br>";
-                    echo "<label class=\"horario\">"."horario: ".$respuesta['horario'].":00.</label><br>";
-                    echo "<label class=\"fecha\">"."fecha de curso: ".$respuesta['fecha_curso']."</label><br><br>";
+                    echo "<label class=\"precio\">"."Precio: ".$respuesta['precio']."$"."</label><br>";
+                    echo "<label class=\"unidad_dis\">"."unidades disponibles: ".$respuesta['unidad_dis'].".</label><br><br>";
+                    // echo "<label class=\"fecha\">"."fecha de diponible: ".$respuesta['fecha_dis']."</label><br><br>";
                     // LA RESERVA DEBE ESTAR AQUI, ESTO PARA CADA CURSO 
                     if($w==2){
                     ?>
                         <div class="pedido">
-                            <a class="reservar" href="carrito/reserva_c.php? id=<?php echo $respuesta['id_curso']?>">reservar </a>
-                            <a class="comprar" href="compra/comprar.php? id=<?php echo $respuesta['id_curso']?>">comprar </a>
+                            <a class="reservar" href="carrito/reserva_c.php? id=<?php echo $respuesta['id_producto']?>">reservar </a>
+                            <a class="comprar" href="compra/comprar.php? id=<?php echo $respuesta['id_producto']?>">comprar </a>
                         </div>
                         <!-- <a style="margin:45%"  href="reservar.php">reservar</a> -->
                     <?php

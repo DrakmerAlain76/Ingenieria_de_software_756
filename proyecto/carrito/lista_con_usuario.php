@@ -19,7 +19,7 @@ $sql1="SELECT * FROM transaccion";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style/style.css">
     <link rel="stylesheet" type="text/css" href="../style/style1.css">
-    <title>LISTA DE CURSOS RESERVADOS</title>
+    <title>LISTA DE productos RESERVADOS</title>
     <style>
         h1{
             color: #A65B1A;
@@ -31,13 +31,13 @@ $sql1="SELECT * FROM transaccion";
     <center>
         <br>
         <br>
-        <h1>CURSOS COMPRADOS</h1>
+        <h1>PRODUCTOS RESERVADOS</h1>
 
     <div class="datagrid">
     <table border="1">
             <thead>
                 <tr>
-                    <th>CURSOS</th>
+                    <th>productos</th>
                     <th>FECHA DE REVERVA</th>
                     <th>HORA DE RESERVA</th>
                     <th>COMPRADO</th>
@@ -55,9 +55,9 @@ $sql1="SELECT * FROM transaccion";
                         
                         ?>
                 <tr>
-                    <td><?php echo $row['curso_res'];?></td>
+                    <td><?php echo $row['producto_res'];?></td>
                     <td><?php echo $row['fecha_res'];?></td>
-                    <td><?php echo $row['horarios'];?></td>
+                    <td><?php echo $row['hora_res'];?></td> <!-- revisar-->
                     <td><?php echo $row['comprado'];?></td>
                 </tr>
                 <?php
@@ -79,7 +79,7 @@ $sql1="SELECT * FROM transaccion";
     
         <br>
         <br>
-        <h1>CURSOS COMPRADOS</h1>
+        <h1>PRODUCTOS COMPRADOS</h1>
         <div class="datagrid">
         <table border="1">
             <thead>
@@ -87,7 +87,7 @@ $sql1="SELECT * FROM transaccion";
                     <th>NOMBRE</th>
                     <th>DIA DE COMPRA</th>
                     <th>HORA DE COMPRA</th>
-                    <th>COSTO</th>
+                    <th>PRECIO</th>
                 </tr>
             </thead>
             <tbody>
@@ -102,10 +102,10 @@ $sql1="SELECT * FROM transaccion";
                         
                         ?>
                 <tr>
-                    <td><?php echo $row['nombre_curso'];?></td>
+                    <td><?php echo $row['nombre_producto'];?></td>
                     <td><?php echo $row['dia_compra'];?></td>
                     <td><?php echo $row['hora_compra'];?></td>
-                    <td><?php echo $row['costo'];?></td>
+                    <td><?php echo $row['costo'];?></td> <!-- revisar-->
                 </tr>
                 <?php
                     }
@@ -118,7 +118,7 @@ $sql1="SELECT * FROM transaccion";
                 ?>
             </tbody>
         </table>
-            </div>
+            </div><br><br>
         </center>
 </body>
 </html>

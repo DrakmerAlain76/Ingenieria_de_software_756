@@ -15,7 +15,7 @@
         <nav id="navegacion" class="cabecera">
             <ul>
                 <li class="li_nav"><a class="lista" href="helper/control_adm.php">inicio</a></li>
-                <li class="li_nav"><a class="lista" href="adm/administrar_coferencias.php">lista coferencias</a></li>
+                <li class="li_nav"><a class="lista" href="adm/administrar_productos.php">lista productos</a></li>
                 <li class="li_nav"><a class="lista" href="adm/administrar_reservaciones.php">lista reservaciones</a></li>
                 <li class="li_nav"><a class="lista" href="adm/lista_usuarios.php">lista usuarios</a></li>
                 <li class="li_nav"><a class="lista" href="adm/lista_accesos">lista de accesos</a></li>

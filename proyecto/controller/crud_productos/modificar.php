@@ -2,7 +2,7 @@
 require_once("../../conexion.php");
 $id=$_REQUEST['id'];
 // echo "ID".$id;
-$sql="SELECT * FROM cursos where id_curso='$id'";
+$sql="SELECT * FROM productos where id_producto='$id'";
 $result=$conn->query($sql);
 //alternativa
 ?>
@@ -16,9 +16,9 @@ $result=$conn->query($sql);
         .datagrid{
             width: 25%;
         }
-        .datagrid td tr{
+        /* .datagrid td tr{
 
-        }
+        } */
         input[type="text"],
         input[type="email"],
         button{
@@ -42,16 +42,16 @@ $result=$conn->query($sql);
         <table border="1">
             <tr>
                 <td>Id</td>
-                <td><input type="text" name="id_curso" value='<?php echo $row['id_curso'];?>'></td>
+                <td><input type="text" name="id_producto" value='<?php echo $row['id_producto'];?>'></td>
                 <!-- <td><label value='<?php //echo $row['id'];?>'><label for=""></label></td> -->
             </tr>
             <tr>
                 <td>Nombre curso</td>
-                <td><input type="text" name="nombre_curso"value='<?php echo $row['nombre_curso'];?>'></td>
+                <td><input type="text" name="nombre_producto"value='<?php echo $row['nombre_producto'];?>'></td>
             </tr>
             <tr>
-                <td>Expositor</td>
-                <td><input type="text" name="expositor" value='<?php echo $row['expositor'];?>'></td>
+                <td>Marca</td>
+                <td><input type="text" name="marca" value='<?php echo $row['marca'];?>'></td>
             </tr>
             <tr>
                 <!-- configurar el tamaño de la caja -->
@@ -60,26 +60,26 @@ $result=$conn->query($sql);
                 <!-- <td><input type="text" name="comentario" value='<?php //echo $row['comentario'];?>'></td>tareatex -->
             </tr>
             <tr>
-                <td>Costo</td>
-                <td><input type="text" name="costo" value='<?php echo $row['costo'];?>'></td>
+                <td>precio</td>
+                <td><input type="text" name="precio" value='<?php echo $row['precio'];?>'></td>
             </tr>
             <tr>
-                <td>Cupos</td>
-                <td><input type="text" name="cupos" value='<?php echo $row['cupos'];?>'></td>
+                <td>unidades disponibles</td>
+                <td><input type="text" name="unidad_dis" value='<?php echo $row['unidad_dis'];?>'></td>
             </tr>
-            <tr>
-                <td>horario</td>
-                <td><input type="text" name="horario" value='<?php echo $row['horario'];?>'></td>
-            </tr>
+            <!-- <tr>
+                <td>comprado_p</td>
+                <td><input type="text" name="comprado_p" value='<?php echo $row['comprado_p'];?>'></td>
+            </tr> -->
             <tr>
                 <td>fecha curso</td>
-                <td><input type="date" name="fecha_curso" value='<?php echo $row['fecha_curso'];?>'></td>
+                <td><input type="date" name="fecha_dis" value='<?php echo $row['fecha_dis'];?>'></td>
             </tr>
             
         </table>
         </div>
         <input class="boton" type="submit" value="Modificar"><br>
-        <br><a class="boton" href="../../adm/administrar_coferencias.php">volver</a>
+        <br><a class="boton" href="../../adm/administrar_productos.php">volver</a>
         </center>
     </form>
 <?php

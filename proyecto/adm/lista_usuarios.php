@@ -1,10 +1,8 @@
 <?php
 require_once '../conexion.php';
 require_once '../helper/control_adm.php';
-    //$sql="SELECT * FROM usuarios";
     $sql="SELECT id_usuario,nombres,apellidos,usuario,email,tipo,cedula,pais,numero_cell FROM usuarios";
     $listado=$conn->query($sql);
-    //alternativa
 ?>
 <!DOCTYPE html>
 <html lang="es">

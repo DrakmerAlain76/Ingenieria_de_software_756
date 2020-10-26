@@ -14,9 +14,9 @@ $result=$conn->query($sql);
         .datagrid{
             width: 25%;
         }
-        .datagrid td tr{
+        /* .datagrid td tr{
 
-        }
+        } */
         input[type="text"],
         input[type="email"],
         button{

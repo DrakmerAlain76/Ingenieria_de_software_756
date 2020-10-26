@@ -52,7 +52,7 @@ h1{
                     var reservas = [];///marks /reservas
                     
                     for (var i in data) {
-                        name.push(data[i].nombre_curso);///student_name /departamento /nombre
+                        name.push(data[i].nombre_producto);///student_name /departamento /nombre
                         reservas.push(data[i].reservas);///marks /reservas
                     }
 
@@ -60,7 +60,7 @@ h1{
                         labels: name,
                         datasets: [
                             {
-                                label: 'Cursos Reservados',///Student Marks /TTTULO
+                                label: 'productos Reservados',///Student Marks /TTTULO
                                 backgroundColor: '#49e2ff',
                                 borderColor: '#46d5f1',
                                 hoverBackgroundColor: '#CCCCCC',

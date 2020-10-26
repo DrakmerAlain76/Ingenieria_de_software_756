@@ -11,8 +11,8 @@ if(isset($_SESSION['usuario'])){
 
 // $id_c=$_GET['id_'];
 // // var_dump($id_c);die();
-// $sql_cursos="SELECT * FROM cursos WHERE id_curso=$id_c";
-// $result=mysqli_query($conn,$sql_cursos);
+// $sql_productos="SELECT * FROM productos WHERE id_producto=$id_c";
+// $result=mysqli_query($conn,$sql_productos);
 // $row=$result->fetch_assoc(); 
 /**/
 // var_dump($t,$usuario);die;
@@ -33,39 +33,53 @@ if(isset($_SESSION['usuario'])){
     <div class="reservas_menu">
         <?php
             if(isset($_GET));
-                $id_curso=$_GET['id'];
-                $sql_cursos="SELECT id_curso,nombre_curso,expositor,comentario,costo,fecha_curso,horario FROM cursos WHERE id_curso=$id_curso";
-            $lista = mysqli_query($conn, $sql_cursos);
+                $id_producto=$_GET['id'];
+                $sql_productos="SELECT id_producto,nombre_producto,marca,comentario,precio,fecha_dis,unidad_dis FROM productos WHERE id_producto=$id_producto";
+            $lista = mysqli_query($conn, $sql_productos);
             
             while($respuesta = mysqli_fetch_assoc($lista)){
                 echo "<br><center><section class=\"section_contenido\">";
-                echo "<center><h1 class=\"nombre_curso\">".$respuesta['nombre_curso']."</h1></center>";
-                echo "<labe1 class=\"expositor\">"."Expositor: ".$respuesta['expositor']."</labe1><br>";
+                echo "<center><h1 class=\"nombre_producto\">".$respuesta['nombre_producto']."</h1></center>";
+                echo "<labe1 class=\"marca\">"."Marca: ".$respuesta['marca']."</labe1><br>";
                 echo "<labe1 class=\"comentario\">"."Comentario: ".$respuesta['comentario']."</labe1><br>";
-                echo "<label class=\"costo\">"."Costo: ".$respuesta['costo']."$"."</label><br>";
-                echo "<label class=\"horario\">"."horario: ".$respuesta['horario'].":00</label><br>";
-                echo "<label class=\"fecha\">"."fecha de curso: ".$respuesta['fecha_curso']."</label><br><br>";
+                echo "<label class=\"precio\">"."Precio: ".$respuesta['precio']."$"."</label><br>";
+                echo "<label class=\"unidad_dis\">"."unidades disponibles: ".$respuesta['unidad_dis']."</label><br><br>";
+                // echo "<label class=\"fecha\">"."fecha de diponible: ".$respuesta['fecha_dis']."</label><br><br>";
 
                     
                     $consulta_de_reserva="SELECT * FROM reserva";
                         $a=0;
                         if($consulta0=mysqli_query($conn,$consulta_de_reserva)){
                                 while($persona=mysqli_fetch_assoc($consulta0)){
-                                    if($usuario==$persona['usuario_res']&&$respuesta['horario']==$persona['horarios']){//revisar
+                                    // var_dump($usuario==$persona['usuario_res']&&$respuesta['comprado_p']==$persona['comprado']);
+                                    // var_dump($usuario);
+                                    // var_dump($persona['usuario_res']);
+                                    // var_dump($respuesta['id_producto']);
+                                    // var_dump($persona['id_producto']);
+                                    // var_dump($respuesta['comprado_p']);
+                                    // var_dump($persona['comprado']);
+                                    // die();
+                                    // if($usuario==$persona['usuario_res']&&$respuesta['comprado_p']==$persona['comprado']){//revisar
+                                    if($usuario==$persona['usuario_res']&&$persona['id_producto']==$respuesta['id_producto']){//revisar
                                     $a=1;
-                                    // $curso_reservado=$persona['id_res'];
+                                    // $producto_reservado=$persona['id_res'];
                                     
                                 break;
                                 }
+                                
                             }
+                            // var_dump($a);
+                            // die();
                         }
                         //////////////////////////////////////////////
                         // $r=false;
-                        $sql6="SELECT * FROM transaccion WHERE id_curso=$id_curso AND id_usuario=$idusu";
+                        $sql6="SELECT * FROM transaccion WHERE id_producto=$id_producto AND id_usuario=$idusu";
                         $guardar6 = mysqli_query($conn, $sql6);
-                        // var_dump();
+                        // var_dump($guardar6);
+                        // var_dump($sql6);
+                        // die();
                         while($respuesta6 = mysqli_fetch_assoc($guardar6)){
-                            $trans_c=$respuesta6['id_curso'];
+                            $trans_c=$respuesta6['id_producto'];
                             $trans_u=$respuesta6['id_usuario'];
                             // $r=true;
                             $a=2;
@@ -75,11 +89,11 @@ if(isset($_SESSION['usuario'])){
 
 
                         if($a==1){
-                            echo "<b>Usted ya tiene reservada una plaza</b></br></br>";
-                            // var_dump($respuesta['id_curso']);
+                            echo "<b>Usted ya tiene reservado</b></br></br>";
+                            // var_dump($respuesta['id_producto']);
                             ?>
                             <!-- TIENE QUE SER EL ID DE RESERVA  -->
-                            <a class="reservar" href="cancelar_reserva.php? id_p=<?php echo $persona['id_res']?>&id_c=<?php echo $respuesta['id_curso']?>">CANCELAR RESERVA</a><br><br>
+                            <a class="reservar" href="cancelar_reserva.php? id_p=<?php echo $persona['id_res']?>&id_c=<?php echo $respuesta['id_producto']?>">CANCELAR RESERVA</a><br><br>
                             <b style="color: red;">si pulsa CANCELAR RESERVA <br> se cancelara su reserva</b><br><br>
                             <?php
 
@@ -88,7 +102,7 @@ if(isset($_SESSION['usuario'])){
                             echo "<center><b>USTED YA COMPRO ESTE CURSO</b></center>";
                         }else{
                             ?>
-                            <a class="reservar" href="reserva_proceso.php? id_=<?php echo $respuesta['id_curso']?>">reservar </a><br>
+                            <a class="reservar" href="reserva_proceso.php? id_=<?php echo $respuesta['id_producto']?>">reservar </a><br>
                             <?php
                         }
 

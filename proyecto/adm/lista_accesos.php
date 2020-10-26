@@ -13,14 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LISTA DE ACCESOS</title>
     <style>
-        /* *{
-            font-family: Arial;
-        }
-        body{
-            background-color: #333333;
-            color: #f5f5f5;
-            
-        } */
+    
     </style>
 </head>
 <body>

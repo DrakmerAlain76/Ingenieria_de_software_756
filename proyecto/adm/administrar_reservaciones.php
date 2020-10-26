@@ -1,9 +1,7 @@
 <?php
 require_once '../conexion.php';
-// require_once 'helper/control_adm.php';
 $sql="SELECT * FROM reserva";
 $listado=$conn->query($sql);
-// var_dump($listado);die;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -13,17 +11,7 @@ $listado=$conn->query($sql);
     <link rel="stylesheet" href="../style/style1.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* *{
-            font-family: Arial;
-        }
-        body{
-            background-color: #333333;
-            color: #f5f5f5;
-            
-        }
-        center{
-            padding-top: 10%;
-        } */
+        
     </style>
     <title>LISTA DE RESERVAS</title>
 </head>
@@ -57,7 +45,7 @@ $listado=$conn->query($sql);
                         <tr>
                             <td><?php echo $row['id_res'];?></td>
                             <td><?php echo $row['usuario_res'];?></td>
-                            <td><?php echo $row['curso_res'];?></td>
+                            <td><?php echo $row['producto_res'];?></td>
                             <td><?php echo $row['fecha_res'];?></td>
                             <td><?php echo $row['hora_res'];?></td>
                         </tr>
@@ -68,7 +56,7 @@ $listado=$conn->query($sql);
                             <tr class="alt">
                                 <td><?php echo $row['id_res'];?></td>
                                 <td><?php echo $row['usuario_res'];?></td>
-                                <td><?php echo $row['curso_res'];?></td>
+                                <td><?php echo $row['producto_res'];?></td>
                                 <td><?php echo $row['fecha_res'];?></td>
                                 <td><?php echo $row['hora_res'];?></td>
                             </tr>

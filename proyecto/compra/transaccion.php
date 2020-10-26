@@ -7,21 +7,21 @@ if(isset($_SESSION['usuario'])){
 }
 $conf=$_GET['conf'];//confirmacion
 $id_us=$_GET['id_us'];//id usuario
-$id_cu=$_GET['id_cu'];//curso para comprar
+$id_cu=$_GET['id_cu'];//productopara comprar
 
 /*CONSULTA DE SI EXISTE RESERVACION*/
 $d=false;
 $sql1="SELECT * FROM reserva";
     $lista = mysqli_query($conn, $sql1);
         while($respuesta = mysqli_fetch_assoc($lista)){
-            if($id_cu==$respuesta['id_curso']){
+            if($id_cu==$respuesta['id_producto']){
                 // var_dump();
                 $id_reserva=$respuesta['id_res'];
                 $descuento=$respuesta['descuento'];
                 $dia_pedido=$respuesta['fecha_res'];
-                $nombre_curso=$respuesta['curso_res'];
-                // var_dump($nombre_curso);
-                $id_curso=$respuesta['id_curso'];
+                $nombre_producto=$respuesta['producto_res'];
+                // var_dump($nombre_producto);
+                $id_producto=$respuesta['id_producto'];
                 $d=true;
             }
         }
@@ -29,10 +29,10 @@ $sql1="SELECT * FROM reserva";
 // var_dump($lista,$d);
 $ban=false;//bandera de comprobacion de compra
 
-/* AUMENTO DE RESERVA (curso comprado debe añadir tabla)*/
+/* AUMENTO DE RESERVA (productocomprado debe añadir tabla)*/
 
-    $sql_cursos="SELECT * FROM cursos WHERE id_curso=$id_cu";
-    $result=mysqli_query($conn,$sql_cursos);
+    $sql_productos="SELECT * FROM productos WHERE id_producto=$id_cu";
+    $result=mysqli_query($conn,$sql_productos);
     $row=$result->fetch_assoc();
     $numero_reserva=(int)$row['reservas'];
 
@@ -49,20 +49,20 @@ while($respuesta2 = mysqli_fetch_assoc($guardar4)){
     }
 }
 
-    $sql5="SELECT * FROM cursos WHERE id_curso=$id_cu";
+    $sql5="SELECT * FROM productos WHERE id_producto=$id_cu";
     $guardar5 = mysqli_query($conn, $sql5);
     while($respuesta3 = mysqli_fetch_assoc($guardar5)){
-        $costo_curso=$respuesta3['costo'];
-        $nom_cur=$respuesta3['nombre_curso'];
-        $cos_cur=$respuesta3['costo'];
+        $precio_curso=$respuesta3['precio'];
+        $nom_cur=$respuesta3['nombre_producto'];
+        $cos_cur=$respuesta3['precio'];
         
     }
     $r=false;
-    $sql6="SELECT * FROM transaccion WHERE id_curso=$id_cu AND id_usuario=$id_us";
+    $sql6="SELECT * FROM transaccion WHERE id_producto=$id_cu AND id_usuario=$id_us";
     $guardar6 = mysqli_query($conn, $sql6);
     // var_dump();
     while($respuesta6 = mysqli_fetch_assoc($guardar6)){
-        $trans_c=$respuesta6['id_curso'];
+        $trans_c=$respuesta6['id_producto'];
         $trans_u=$respuesta6['id_usuario'];
         $r=true;
         
@@ -82,35 +82,35 @@ while($respuesta2 = mysqli_fetch_assoc($guardar4)){
         //Si tiene cash puede comprar
 
         //Comparar si puede comprar el curso
-        //costo del curso
-//  $sql5="SELECT * FROM cursos WHERE id_curso=$id_cu";
+        //precio del curso
+//  $sql5="SELECT * FROM productos WHERE id_producto=$id_cu";
 //     $guardar5 = mysqli_query($conn, $sql5);
 //     while($respuesta3 = mysqli_fetch_assoc($guardar5)){
-//         $costo_curso=$respuesta3['costo'];
-//         $nom_cur=$respuesta3['nombre_curso'];
-//         $cos_cur=$respuesta3['costo'];
+//         $precio_curso=$respuesta3['precio'];
+//         $nom_cur=$respuesta3['nombre_producto'];
+//         $cos_cur=$respuesta3['precio'];
         
 //     }
         
         
-        if($cash_usuario>=$costo_curso){
-            // var_dump($cash_usuario,$costo_curso);
+        if($cash_usuario>=$precio_curso){
+            // var_dump($cash_usuario,$precio_curso);
             //////////////////////////
             //REVISAR QUE TENGA RESERVA
-            $cash_total=$cash_usuario-$costo_curso;
+            $cash_total=$cash_usuario-$precio_curso;
             $sql4="UPDATE usuarios SET cash=$cash_total WHERE id_usuario=$id_us";
             $guardar3 = mysqli_query($conn, $sql4);
             if($d){
                                 
                 //transaccion
 
-                $sql2="INSERT INTO transaccion VALUES(null, CURDATE(), CURRENT_TIME(),'$dia_pedido',$descuento,'$nombre_curso',$costo_curso,$id_curso,$id_us);";
+                $sql2="INSERT INTO transaccion VALUES(null, CURDATE(), CURRENT_TIME(),'$dia_pedido',$descuento,'$nombre_producto',$precio_curso,$id_producto,$id_us);";
                 $sql3="UPDATE reserva SET comprado='si' WHERE id_res=$id_reserva";
                 
                 ////////
                 /*nueva consulta*/
                 $numero_reserva++;
-                $reserva1="UPDATE `cursos` SET `reservas`=$numero_reserva WHERE id_curso=$id_cu";//del curso  
+                $reserva1="UPDATE `productos` SET `reservas`=$numero_reserva WHERE id_producto=$id_cu";//del producto 
                 $consulta2 = mysqli_query($conn, $reserva1);
                 // var_dump($consulta2);
                 // die();
@@ -129,7 +129,7 @@ while($respuesta2 = mysqli_fetch_assoc($guardar4)){
                 ////////
                 /*nueva consulta*/
                 $numero_reserva++;
-                $reserva1="UPDATE `cursos` SET `reservas`=$numero_reserva WHERE id_curso=$id_cu";//del curso  
+                $reserva1="UPDATE `productos` SET `reservas`=$numero_reserva WHERE id_producto=$id_cu";//del producto 
                 $consulta2 = mysqli_query($conn, $reserva1);
                 
                 ////////

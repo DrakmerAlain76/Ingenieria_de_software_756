@@ -10,8 +10,8 @@ require_once '../conexion.php';
     $id_c=$_GET['id_c'];
     $id_p=$_GET['id_p'];
     // var_dump($id_c);die();
-    $sql_cursos="SELECT * FROM cursos WHERE id_curso=$id_c";
-    $result=mysqli_query($conn,$sql_cursos);
+    $sql_productos="SELECT * FROM productos WHERE id_producto=$id_c";
+    $result=mysqli_query($conn,$sql_productos);
     $row=$result->fetch_assoc();
 ?>
 <!DOCTYPE html>
@@ -33,10 +33,10 @@ require_once '../conexion.php';
         // CONTROL DE CANCELAR RESERVA
     
         // eliminar
-        //$cupos=(int)$row['cupos'];//
+        //$unidad_dis=(int)$row['unidad_dis'];//
         $numero_reserva=(int)$row['reservas'];//converte a entero
-        // $curso_a_reservar=$row['nombre_curso'];//
-        //$horario_curso=$row['horario'];//
+        // $curso_a_reservar=$row['nombre_producto'];//
+        //$comprado_p_curso=$row['comprado_p'];//
         
         $numero_reserva--;//
         
@@ -50,8 +50,8 @@ require_once '../conexion.php';
         // var_dump($eliminar_reserva);
         // die();
         // $reservaciones = "INSERT INTO reserva VALUES(
-            // null, '$usuario', '$curso_a_reservar',CURDATE(),CURRENT_TIME(),1,$horario_curso,0);";//
-        $reserva1="UPDATE `cursos` SET `reservas`=$numero_reserva WHERE id_curso=$id_c";//del curso  
+            // null, '$usuario', '$curso_a_reservar',CURDATE(),CURRENT_TIME(),1,$comprado_p_curso,0);";//
+        $reserva1="UPDATE `productos` SET `reservas`=$numero_reserva WHERE id_producto=$id_c";//del producto 
         // die();
                 $consulta1 = mysqli_query($conn, $eliminar_reserva);//
                 $consulta2 = mysqli_query($conn, $reserva1);//
@@ -60,7 +60,7 @@ require_once '../conexion.php';
                 
         
     ?>
-    <center><h1>se canceló el curso reservado</h1></center>
+    <center><h1>se canceló el productoreservado</h1></center>
     <center><br><a class="boton" href="../index_.php">volver</a></center>
     </body>
 </html>

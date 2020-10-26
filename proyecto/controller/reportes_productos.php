@@ -7,22 +7,22 @@ $pdf = new Cezpdf('Carta');
  $pdf->ezImage("emp.jpeg", 10, 150, 'none', 'left');
  $pdf->ezText("<b>Fecha:</b> ".date("d/m/Y"),12);
  $pdf->ezText("<b>Hora:</b> ".date("h:i:s"),12);
- $pdf->ezText("<b>----Tabla Cursos-----</b>\n",18);
- $sql="SELECT * from cursos";
+ $pdf->ezText("<b>----Tabla productos-----</b>\n",18);
+ $sql="SELECT * from productos";
  /**////revisar
  $result=$conn->query($sql);
  if($result->num_rows>0){
      while ($row=mysqli_fetch_array($result)) {
      $data[]=array(
-        'id_curso'      =>$row[0],
-        'nombre_curso'  =>$row[1],
-        'expositor'     =>$row[2],
+        'id_producto'      =>$row[0],
+        'nombre_producto'  =>$row[1],
+        'marca'     =>$row[2],
         // 'comentario'    =>$row[3],
-        'costo'         =>$row[4],
-        'cupos'         =>$row[5],
-        'fecha_curso'   =>$row[6],
+        'precio'         =>$row[4],
+        'unidad_dis'         =>$row[5],
+        'fecha_dis'   =>$row[6],
         'reservas'      =>$row[7],
-        'horario'      =>$row[8]
+        'comprado_p'      =>$row[8]
     );
 }
 }
@@ -30,15 +30,15 @@ $pdf = new Cezpdf('Carta');
      echo "Base de datos vacía";
 }
 $titles=array(
-    'id_curso'=>'id_curso',
-    'nombre_curso'=>'nombre_curso',
-    'expositor'=>'expositor',
+    'id_producto'=>'id_producto',
+    'nombre_producto'=>'nombre_producto',
+    'marca'=>'marca',
     // 'comentario'=>'comentario',
-    'costo'=>'costo',
-    'cupos'=>'cupos',
-    'fecha_curso'=>'fecha_curso',
+    'precio'=>'precio',
+    'unidad_dis'=>'unidad_dis',
+    'fecha_dis'=>'fecha_dis',
     'reservas'=>'reservas',
-    'horario'=>'horario',
+    'comprado_p'=>'comprado_p',
 );
 $pdf->ezTable($data);
 ob_end_clean();

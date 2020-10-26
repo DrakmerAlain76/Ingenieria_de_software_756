@@ -16,7 +16,7 @@ $pdf = new Cezpdf('Carta');
      $data[]=array(
         'id_res'      =>$row[0],
         'usuario_res'     =>$row[1],
-        'curso_res' =>$row[2],
+        'producto_res' =>$row[2],
         'fecha_res'       =>$row[3],
         'hora_res'        =>$row[4]
         // 'codigo'         =>$row[5],
@@ -30,7 +30,7 @@ $pdf = new Cezpdf('Carta');
 $titles=array(
     'id_res'=>'id_res',
     'usuario_res'=>'usuario_res',
-    'curso_res'=>'curso_res',
+    'producto_res'=>'producto_res',
     'fecha_res'=>'fecha_res',
     'hora_res'=>'hora_res'
 );

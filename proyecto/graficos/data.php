@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 include ('../conexion.php');
 // $conn = mysqli_connect("localhost","root","","inf755_basedd_t");///modificar
 //base de datos solo de las tablas a usar
-$sqlQuery = "SELECT id_curso,nombre_curso,reservas FROM cursos ORDER BY id_curso";///modificar
+$sqlQuery = "SELECT id_producto,nombre_producto,reservas FROM productos ORDER BY id_producto";///modificar
 //consulta a la base de datos
 $result = mysqli_query($conn,$sqlQuery);
 // listado de las tablas

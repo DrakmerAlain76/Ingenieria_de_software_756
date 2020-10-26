@@ -7,11 +7,11 @@ require_once '../conexion.php';
     }
 
 if(isset($_GET)){
-    // $id_curso=$_GET['id_c'];
+    // $id_producto=$_GET['id_c'];
 
 }
-$id_curso=$_GET;
-// var_dump($id_curso);
+$id_producto=$_GET;
+// var_dump($id_producto);
 // die();
 // $sql4="UPDATE usuarios SET cash=$cash_total WHERE id_usuario=$id_us";
 $sql4="SELECT cash FROM usuarios WHERE id_usuario=$id_usuario";
@@ -45,7 +45,7 @@ $sald=$saldo_d['cash'];
         <input type="" > -->
         <!-- SE TIENE QUE HACER EL CONTROL SI TIENE O NO TIENE CASH -->
         <?php 
-           // if($saldo>=$costo_curso){?>
+           // if($saldo>=$precio_curso){?>
                 
                 <input class="conf-1" id="confirma" name="conf" type="checkbox" value="confirmar" required>
                 <label for="conf">Confirmar si esta seguro de comprar</label><br>
