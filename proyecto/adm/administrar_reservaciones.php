@@ -30,7 +30,7 @@ $listado=$conn->query($sql);
                 <tr>
                     <th>ID RESERVAS</th>
                     <th>USUARIO</th>
-                    <th>CURSO</th>
+                    <th>PRODUCTO</th>
                     <th>FECHA DE RESERVA</th>
                     <th>HORA DE RESERVA</th>
                 </tr>

@@ -34,7 +34,7 @@
             <li class="logs"><a href=""><img src="img/ico/yt.ico" alt=""></i></a></li>
         </ul>
         <section id="letra_imgp">
-            <h1 class="let_p">RESERVA DE CONFERENCIAS VIRTUALES</h1>
+            <h1 class="let_p">TIENDA VIRTUAL DE VENTAS DE COMPUTADORAS COMPUMUNDO</h1>
             
         </section>
     </div>

@@ -99,7 +99,7 @@ if(isset($_SESSION['usuario'])){
 
                         }elseif($a==2)
                         {
-                            echo "<center><b>USTED YA COMPRO ESTE CURSO</b></center>";
+                            echo "<center><b>USTED YA COMPRO ESTE PRODUCTO</b></center>";
                         }else{
                             ?>
                             <a class="reservar" href="reserva_proceso.php? id_=<?php echo $respuesta['id_producto']?>">reservar </a><br>

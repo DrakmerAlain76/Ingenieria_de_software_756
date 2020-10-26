@@ -71,7 +71,7 @@ while($respuesta2 = mysqli_fetch_assoc($guardar4)){
 
     /*CONFIRMAR SI COMPRO O NO*/
     if($r){
-        $mensaje="USTED YA COMPRO ESTE CURSO";
+        $mensaje="USTED YA COMPRO ESTE PRODUCTO";
     }else
     {
 
@@ -179,7 +179,7 @@ if(!$ban){
 <body>
 <?php require_once ('../view/menu_navegacion_us.php'); ?>
     <center>
-        <!-- <h1>USTED COMPRO EL CURSO .. </h1> -->
+        <!-- <h1>USTED COMPRO EL PRODUCTO .. </h1> -->
         <!-- hacer los mensajes de confirmacion -->
         <?php
         echo "<br>"."<h1>".$mensaje."</h1>";

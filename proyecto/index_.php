@@ -63,13 +63,13 @@ require_once 'helper/control_par.php';
                     // IMAGEN
                     // var_dump($image);
                     ?>
-                    <div><img src= "<?= "controller/crud_productos/images/".$image?>" alt="<?= $name ?>" width="100px" height="75px"></div>
+                    <div><img src= "<?= "controller/crud_productos/images/".$image?>" alt="<?= $name ?>" width="100px" height="75px"></div><br>
                     <?php
                     
                     ///////////////////////////
 
                     
-                    // LA RESERVA DEBE ESTAR AQUI, ESTO PARA CADA CURSO 
+                    // LA RESERVA DEBE ESTAR AQUI, ESTO PARA CADA PRODUCTO 
                     if($w==2){
                     ?>
                         <div class="pedido">

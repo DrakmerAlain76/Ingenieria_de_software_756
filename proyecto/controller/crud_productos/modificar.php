@@ -41,7 +41,7 @@ $result=$conn->query($sql);
     <form method="post" action="actualizar.php"  enctype="multipart/form-data">
         <center>
         <br>
-        <h1>MODIFICAR CURSO</h1>
+        <h1>MODIFICAR PRODUCTO</h1>
         <div class="datagrid">
         <table border="1">
             <tr>

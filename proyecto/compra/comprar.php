@@ -25,7 +25,7 @@ if(isset($_SESSION['usuario'])){
         <?php
             if(isset($_GET));
                 $id_producto=$_GET['id'];
-                $sql_productos="SELECT id_producto,nombre_producto,marca,comentario,precio,fecha_dis,unidad_dis FROM productos WHERE id_producto=$id_producto";
+                $sql_productos="SELECT * FROM productos WHERE id_producto=$id_producto";
             $lista = mysqli_query($conn, $sql_productos);
             
             while($respuesta = mysqli_fetch_assoc($lista)){
@@ -41,7 +41,14 @@ if(isset($_SESSION['usuario'])){
                         $a=0;
                         if($consulta0=mysqli_query($conn,$consulta_de_reserva)){
                                 while($persona=mysqli_fetch_assoc($consulta0)){
-                                    if($usuario==$persona['usuario_res']&&$respuesta['comprado_p']==$persona['comprado']){//revisar
+
+                                    // var_dump($persona);
+                                    // var_dump($respuesta);
+                                    // var_dump($persona['usuario_res']);
+                                    // var_dump($respuesta['comprado_p']);
+                                    // var_dump($persona['comprado']);
+                                    // die();
+                                    if($usuario==$persona['usuario_res']&&$respuesta['id_producto']==$persona['id_producto']){//revisar
                                     $a=1;
                                     // $producto_reservado=$persona['id_res'];
                                     //var_dump($a);
