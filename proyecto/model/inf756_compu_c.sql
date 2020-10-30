@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 26-10-2020 a las 08:18:54
+-- Tiempo de generación: 30-10-2020 a las 03:26:11
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.4.0
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `accesos` (
   `hora_a` time NOT NULL,
   `tipo` int(1) NOT NULL,
   PRIMARY KEY (`id_a`)
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `accesos`
@@ -115,7 +115,14 @@ INSERT INTO `accesos` (`id_a`, `nuser`, `fecha_a`, `hora_a`, `tipo`) VALUES
 (85, 'drakm', '2020-10-25', '22:56:56', 2),
 (86, 'rodra', '2020-10-26', '00:37:27', 1),
 (87, 'rodra', '2020-10-26', '03:56:21', 1),
-(88, 'drakmers', '2020-10-26', '03:56:39', 2);
+(88, 'drakmers', '2020-10-26', '03:56:39', 2),
+(89, 'rodra', '2020-10-26', '05:03:06', 1),
+(90, 'drakmer', '2020-10-26', '07:12:45', 2),
+(91, 'rodra', '2020-10-26', '07:35:30', 1),
+(92, 'rodra', '2020-10-26', '07:36:47', 1),
+(93, 'drakmer', '2020-10-26', '07:37:24', 2),
+(94, 'drakmer', '2020-10-26', '08:52:11', 2),
+(95, 'rodra', '2020-10-26', '08:56:53', 1);
 
 -- --------------------------------------------------------
 
@@ -132,13 +139,6 @@ CREATE TABLE IF NOT EXISTS `graficos` (
   `cursos` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_grafico`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `graficos`
---
-
-INSERT INTO `graficos` (`id_grafico`, `reservas`, `ventas`, `reservas_pagadas`, `cursos`) VALUES
-(1, 5, 15, 20, 'javasacritp');
 
 -- --------------------------------------------------------
 
@@ -157,22 +157,26 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `fecha_dis` date NOT NULL,
   `reservas` int(11) NOT NULL,
   `comprado_p` int(11) NOT NULL,
+  `image` varchar(191) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id_producto`, `nombre_producto`, `marca`, `comentario`, `precio`, `unidad_dis`, `fecha_dis`, `reservas`, `comprado_p`) VALUES
-(1, 'HTML', 'fernando hernandez', 'Este es curso de introduccion de de HTML y las teclonogias de la web asi mismo se vera mas de la actulidad y la tendencias de estas nuevas tecnologias', 100, 151, '2020-08-24', 20, 10),
-(2, 'CSS', 'victor robles', 'Este es curso de introduccion de de CSS y las teclonogias de la web asi mismo se vera mas de la actulidad y la tendencias de estas nuevas tecnologias', 100, 150, '2020-08-25', 13, 20),
-(3, 'JAVASCRIPT', 'FAZT', 'Este es curso de introduccion de de JAVASCRIPT y las teclonogias de la web asi mismo se vera mas de la actulidad y la tendencias de estas nuevas tecnologias', 100, 150, '2020-08-26', 10, 11),
-(10, 'Salchichas ', 'master chef Carlos', 'descripcion y ss ', 154, 86, '0000-00-00', 4, 9),
-(11, 'cumputacion', 'jose arias', 'descripcion mucho', 150, 784, '0000-00-00', 2, 12),
-(13, 'salteÃ±as', 'Alberto', 'descripcion de salteÃ±as', 150, 200, '2020-09-12', 3, 10),
-(14, 'Curso de C', 'Pedro Fernandez', 'descripcion del curso en C ', 200, 150, '2020-09-24', 3, 15),
-(28, 'PC', 'des', 'descripcion ', 190, 180, '2020-10-27', 1, 1);
+INSERT INTO `productos` (`id_producto`, `nombre_producto`, `marca`, `comentario`, `precio`, `unidad_dis`, `fecha_dis`, `reservas`, `comprado_p`, `image`) VALUES
+(43, 'mouse basilisk', 'razer', 'raton de ultima tecnologia el mas rapido y el mejor', 150, 10, '2020-10-26', 1, 0, 'descargar.jpg'),
+(44, 'computadora i7', 'HD', 'computadora de ultima generacion con 4 de ram video de 8gb el mejor rendimiento', 1400, 3, '2020-10-27', 0, 0, 'images.jpg'),
+(45, 'computadora rycen 7', 'Asus', 'computadora de ultima generaciÃ³n con 12 de ram y video de 8gb perfecto para video juegos y mas uso', 1250, 4, '2020-10-26', 0, 0, 'images (1).jpg'),
+(46, 'computadora i3', 'THOSHIBA', 'computadora de escritorio para oficina con un buen rendimiento 4gb de ram 2 de video', 1120, 19, '2020-10-26', 0, 0, 'descargar (4).jpg'),
+(47, 'teclado gamer TD rgb', 'redragon', 'teclado enfocado a video juego y entretenimiento con una buena calidad y sensibilidad', 120, 3, '2020-10-26', 0, 0, 'descargar (3).jpg'),
+(48, 'impresora canon 12e', 'CANNON', 'impresora de tinta lacer eficente al momento de trabajar mas rapido y menos ruidoso', 124, 8, '2020-10-26', 1, 0, 'descargar (1).jpg'),
+(49, 'teclado rowel esr7', 'rowel', 'teclado convencional para uso cotidiano, sin retrasos anti click falso', 20, 7, '2020-10-26', 0, 0, 'descargar.png'),
+(50, 'impresora canon 18r', 'CANNON', 'impresora de tinta, para el mas exigente rendimiento el mejor de  la marca calidad y precio', 250, 4, '2020-10-26', 0, 0, 'images (2).jpg'),
+(51, 'portail 15in', 'lenovo', 'excelente portatil a bajo costo con un terminado de calidad ', 1200, 9, '2020-10-26', 0, 0, 'images (1).jpg'),
+(52, 'portail 18in', 'HD', 'computadora portÃ¡til de excelente calidad 8 de ram 4 de video liviano, no calienta, su baterÃ­a rinde y dura mas   ', 1500, 8, '2020-10-26', 0, 0, 'images (4).jpg'),
+(53, 'pantalla lcd', 'HD', 'este producto es de calidad', 1250, 8, '2020-10-26', 0, 0, 'descargar (2).jpg');
 
 -- --------------------------------------------------------
 
@@ -193,29 +197,15 @@ CREATE TABLE IF NOT EXISTS `reserva` (
   `id_producto` int(11) NOT NULL,
   `comprado` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_res`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `reserva`
 --
 
 INSERT INTO `reserva` (`id_res`, `usuario_res`, `producto_res`, `fecha_res`, `hora_res`, `cupos`, `horarios`, `descuento`, `id_producto`, `comprado`) VALUES
-(16, 'pedro123', 'CSS', '2020-10-20', '22:32:34', 1, 20, 0, 2, 'si'),
-(17, 'pedro123', 'nuevo curso', '2020-10-20', '23:38:24', 1, 8, 0, 21, 'si'),
-(22, 'pedro123', 'Salchichas ', '2020-10-21', '05:55:34', 1, 9, 0, 10, 'si'),
-(24, 'pedro123', 'Curso de C', '2020-10-21', '07:36:54', 1, 15, 0, 14, 'si'),
-(27, 'Alain76', 'CSS', '2020-10-21', '10:46:15', 1, 20, 0, 2, 'si'),
-(29, 'drakm', 'HTML', '2020-10-25', '23:11:42', 1, 10, 0, 1, 'no'),
-(30, 'drakm', 'HTML', '2020-10-25', '23:16:17', 1, 10, 0, 1, 'no'),
-(31, 'drakm', 'HTML', '2020-10-25', '23:17:40', 1, 10, 0, 1, 'no'),
-(32, 'drakm', 'HTML', '2020-10-25', '23:17:49', 1, 10, 0, 1, 'no'),
-(33, 'drakm', 'HTML', '2020-10-25', '23:17:59', 1, 10, 0, 1, 'no'),
-(34, 'drakm', 'HTML', '2020-10-25', '23:18:09', 1, 10, 0, 1, 'si'),
-(35, 'drakm', 'Salchichas ', '2020-10-25', '23:19:20', 1, 9, 0, 10, 'no'),
-(36, 'drakm', 'Salchichas ', '2020-10-25', '23:20:47', 1, 9, 0, 10, 'no'),
-(41, 'drakm', 'salteÃ±as', '2020-10-26', '00:32:40', 1, 10, 0, 13, 'si'),
-(43, 'drakmers', 'JAVASCRIPT', '2020-10-26', '03:58:03', 1, 11, 0, 3, 'si'),
-(44, 'drakmers', 'cumputacion', '2020-10-26', '03:58:40', 1, 12, 0, 11, 'no');
+(47, 'drakmer', 'pantalla lcd', '2020-10-26', '07:38:55', 1, 0, 0, 42, 'no'),
+(48, 'drakmer', 'mouse basilisk', '2020-10-26', '08:52:33', 1, 0, 0, 43, 'no');
 
 -- --------------------------------------------------------
 
@@ -237,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `saldo` (
 --
 
 INSERT INTO `saldo` (`id_saldo`, `cash`, `valor`, `disponible`) VALUES
-(1, 'XXXAAAEEE', 1000, 'no'),
+(1, 'XXXAAAEEE', 1000, 'si'),
 (2, 'AAASSSDDD', 2000, 'si'),
 (3, 'RRRGGGBBB', 500, 'si'),
 (4, 'UUUBBBLLL', 200, 'si');
@@ -260,25 +250,14 @@ CREATE TABLE IF NOT EXISTS `transaccion` (
   `id_producto` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   PRIMARY KEY (`id_transaccion`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `transaccion`
 --
 
 INSERT INTO `transaccion` (`id_transaccion`, `dia_compra`, `hora_compra`, `dia_pedido`, `descuento`, `nombre_producto`, `costo`, `id_producto`, `id_usuario`) VALUES
-(2, '2020-10-21', '01:42:49', '2020-10-20', '0', 'nuevo curso', 152, 21, 29),
-(6, '2020-10-21', '03:21:24', '0000-00-00', '0', 'Curso de C', 200, 14, 29),
-(7, '2020-10-21', '03:21:38', '0000-00-00', '0', 'Salchichas ', 154, 10, 29),
-(15, '2020-10-21', '03:55:55', '0000-00-00', '0', 'CSS', 100, 2, 29),
-(16, '2020-10-21', '05:08:13', '0000-00-00', '0', 'JAVASCRIPT', 100, 3, 29),
-(20, '2020-10-21', '10:49:19', '0000-00-00', '0', 'HTML', 100, 1, 31),
-(21, '2020-10-25', '23:13:35', '2020-10-21', '0', 'CSS', 100, 2, 16),
-(22, '2020-10-25', '23:18:22', '2020-10-25', '0', 'HTML', 100, 1, 16),
-(23, '2020-10-26', '00:19:11', '2020-10-21', '0', 'Curso de C', 200, 14, 16),
-(24, '2020-10-26', '00:33:14', '2020-10-26', '0', 'salteÃ±as', 150, 13, 16),
-(25, '2020-10-26', '03:57:27', '0000-00-00', '0', 'PC', 190, 28, 16),
-(26, '2020-10-26', '03:58:28', '2020-10-26', '0', 'JAVASCRIPT', 100, 3, 16);
+(30, '2020-10-26', '08:55:22', '0000-00-00', '0', 'impresora canon 12e', 124, 48, 16);
 
 -- --------------------------------------------------------
 
@@ -310,8 +289,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `nombres`, `apellidos`, `usuario`, `contrasena`, `email`, `tipo`, `cedula`, `pais`, `numero_cell`, `genero`, `cash`, `Fech_Nac`) VALUES
 (14, 'drak', 'ro', 'rodra', '$2y$04$ASJcj2DQ5Pz/RZApPQZQ1O77N4lp0cOIZbkRjB6Jz44oNKpBOOZge', 'rodra@gmail.com', 1, '0', '0', '0', '', '0', 0),
-(15, 'marcelo jose', 'arias', 'marcelo_arias', '$2y$04$Bu7V3l8zJIbAA1WlGXFH6OgyYLe6mHYZokTWG6WvaKDjnkMVF.cqa', 'marcelo@arias.com', 2, '1652325', 'Bolivia', '7855165', '', '0', 0),
-(16, 'drakmer', 'rodriguez', 'drakmer', '$2y$04$ra10/aVt0fh0ZAgGIHyFlOxdJgyKrMIxryS.4J50ircNyT/5GtFPC', 'drak@ro.com', 2, '16513256', 'Bolivia', '75156685', '', '99160', 0);
+(16, 'drakmer', 'rodriguez', 'drakmer76', '$2y$04$ra10/aVt0fh0ZAgGIHyFlOxdJgyKrMIxryS.4J50ircNyT/5GtFPC', 'drak@ro.com', 2, '16513256', 'Bolivia', '75156685', '', '98406', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
